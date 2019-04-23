@@ -34,14 +34,32 @@ window.addEventListener("load", function () {
       calCart();
       // Runs the sessionTest function when clicked
       document.getElementById("regSubmit").onclick = sessionTest;
-      //
+      // The onblur event handlers are for the input boxes
       document.getElementById("fnBox").onblur = calcCart;
       document.getElementById("lnBox").onblur = calcCart;
       document.getElementById("groupBox").onblur = calcCart;
       document.getElementById("mailBox").onblur = calcCart;
       document.getElementById("phoneBox").onblur = calcCart;
       document.getElementById("banquetBox").onblur = calcCart;
-      //
+      // The onchange event handler is for the sectionBox selection list
       document.getElementById("sessionBox").onchange = calcCart;
+      // The onclick event handler is for the mediaCB check box which runs the calcCart function in response
       document.getElementById("mediaCB").onclick = calcCart;
 });
+
+// The main purpose of the following function is to provide a validation test for the confrence session selection list
+function sessionTest() {
+      var sesionBox = document.getElementById("sessionBox");
+
+      // Tests whether the slected index of the sessionBox section list is equal to -1
+      if (confSession.selectedIndex === -1) {
+            sessionBox.setCustomValidity("Select a Session Package");
+      } else {
+            sessionBox.setCustomValidity("");
+      }
+}
+
+// The function calculates the registration cost and to save information about the customer's choices in session storage
+function calcCart() {
+      var confname =
+}
