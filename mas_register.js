@@ -61,5 +61,34 @@ function sessionTest() {
 
 // The function calculates the registration cost and to save information about the customer's choices in session storage
 function calcCart() {
-      var confname =
+      // Within confName the values first and last name are stored
+      sessionStorage.confName = document.forms.regForm.elements.fnBox.value + " " + document.forms.regForm.elements.lnBox.value;
+
+      // The values group, mail, phone, and banquet are all stored within the session storage variables
+      sessionStorage.confGroup = document.forms.regForm.elements.groupBox.value;
+      sessionStorage.confMail = document.forms.regForm.elements.mailBox.value;
+      sessionStorage.confPhone = document.forms.regForm.elements.phoneBox.value;
+      sessionStorage.confBanquet = document.forms.regForm.elements.banquetBox.value;
+
+      // The value of banquet cost will be multiplied by 55
+      sessionStorage.confBanquetCost = confBanquet * 55;
+      sessionStorage.selectedIndex = document.forms.regForm.elements.sesionBox.value;
+
+      // Records which session the user has selected
+      if (sessionBox.selectedIndex !== -1) {
+            sessionStorage.confSession = document.forms.regForm.elements.sessionBox[selectedIndex].textContent;
+            sessionStorage.confSessionCost = document.forms.regForm.elements.sessionBox.value;
+      } else {
+            sessionStorage.confSession = "";
+            sessionStorage.confSessionCost = 0;
+      }
+
+      // 
+      if (document.getElementById("mediaCB").onclick) {
+            sessionStorage.confPack = "yes";
+            sessionStorage.confPackCost = 115;
+      } else {
+            sessionStorage.confPack = "no";
+            sessionStorage.confPackCost = 0;
+      }
 }
