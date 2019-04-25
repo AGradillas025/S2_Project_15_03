@@ -49,7 +49,7 @@ window.addEventListener("load", function () {
 
 // The main purpose of the following function is to provide a validation test for the confrence session selection list
 function sessionTest() {
-      var sesionBox = document.getElementById("sessionBox");
+      var confSession = document.getElementById("sessionBox");
 
       // Tests whether the slected index of the sessionBox section list is equal to -1
       if (confSession.selectedIndex === -1) {
@@ -76,19 +76,34 @@ function calcCart() {
 
       // Records which session the user has selected
       if (sessionBox.selectedIndex !== -1) {
-            sessionStorage.confSession = document.forms.regForm.elements.sessionBox[selectedIndex].textContent;
-            sessionStorage.confSessionCost = document.forms.regForm.elements.sessionBox.value;
+            sessionStorage.confSession = document.forms.regForm.elements.sessionBox[selectedIndex].text;
+            sessionStorage.confSessionCost = document.forms.regForm.elements.sessionBox[selectedIndex].value;
       } else {
             sessionStorage.confSession = "";
             sessionStorage.confSessionCost = 0;
       }
 
-      // 
-      if (document.getElementById("mediaCB").onclick) {
+      // This will allow the user to opt to purchase a meida pack for $115
+      if (forms.regForm.elements.mediaCB.checked) {
             sessionStorage.confPack = "yes";
             sessionStorage.confPackCost = 115;
       } else {
             sessionStorage.confPack = "no";
             sessionStorage.confPackCost = 0;
+      }
+
+      // 
+      function writeSessionValues() {
+            //
+            document.getElementById("regName").textContent = sessionStorage.confName;
+            document.getElementById("regGroup").textContent = sessionStorage.confGroup;
+            document.getElementById("regEmail").textContent = sessionStorage.confMail;
+            document.getElementById("regPhone").textContent = sessionStorage.confPhone;
+            document.getElementById("regSession").textContent = sessionStorage.confSession;
+            document.getElementById("regBanquet").textContent = sessionStorage.confBanquet;
+            document.getElementById("regPack").textContent = sessionStorage.confPack;
+
+            //
+            document.getElementById("regTotal").textContent = "$" + sessionStorage.confTotal;
       }
 }
